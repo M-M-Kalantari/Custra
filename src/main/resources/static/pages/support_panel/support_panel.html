@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>پنل پشتیبانی</title>
+    <link rel="icon" href="../../Logo/Icon-5.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="support_panel.css"/>
+    <link rel="stylesheet" href="../../Icon/regular/style.css"/>
+</head>
+
+<body>
+<div class="logo-box">
+    <img src="../../Logo/Icon-2.png" alt="لوگو سایت" class="site-logo">
+</div>
+
+<!-- Welcome Text -->
+<h2>کارشناس محترم خوش آمدید</h2>
+
+<!-- Tabs -->
+<div class="tabs">
+    <button class="tab-btn active" data-tab="tab1">درخواست‌های ارسال شده</button>
+    <button class="tab-btn" data-tab="tab2">درخواست‌های در حال بررسی</button>
+</div>
+
+<!-- First Tab: Submitted Requests -->
+<div class="tab-content active" id="tab1">
+    <table>
+        <thead>
+        <tr>
+            <th colspan="10" class="table-title">لیست درخواست‌های ارسال شده</th>
+        </tr>
+        <tr>
+            <th>زمان درخواست</th>
+            <th>نام مشتری</th>
+            <th>نام کاربر</th>
+            <th>شماره درخواست</th>
+            <th>موضوع درخواست</th>
+            <th>وضعیت درخواست</th>
+            <th>زمان انجام</th>
+            <th>علت برگشت</th>
+            <th>توضیحات مدیر پشتیبانی</th>
+            <th>بررسی درخواست</th>
+        </tr>
+        </thead>
+        <tbody id="submitted-requests">
+        </tbody>
+    </table>
+</div>
+
+<!-- Second Tab: Requests Under Review -->
+<div class="tab-content" id="tab2">
+    <table>
+        <thead>
+        <tr>
+            <th colspan="10" class="table-title">لیست درخواست‌های در حال بررسی</th>
+        </tr>
+        <tr>
+            <th>زمان درخواست</th>
+            <th>نام مشتری</th>
+            <th>نام کاربر</th>
+            <th>شماره درخواست</th>
+            <th>موضوع درخواست</th>
+            <th>وضعیت درخواست</th>
+            <th>زمان انجام</th>
+            <th>علت برگشت</th>
+            <th>توضیحات مدیر پشتیبانی</th>
+            <th>بررسی درخواست</th>
+        </tr>
+        </thead>
+        <tbody id="reviewing-requests">
+        </tbody>
+    </table>
+</div>
+
+<!-- Review Request Modal -->
+<div id="review-modal" class="modal">
+    <div class="modal-content">
+        <h3>بررسی درخواست</h3>
+        <div class="horizontal-group">
+            <div class="form-group horizontal-field">
+                <label for="reqNumber">شماره درخواست:</label>
+                <input type="text" id="reqNumber" readonly/>
+            </div>
+            <div class="spase"></div>
+            <div class="form-group horizontal-field">
+                <label for="reqTime">زمان درخواست:</label>
+                <input type="text" id="reqTime" readonly/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reqSubject">موضوع درخواست:</label>
+            <input type="text" id="reqSubject" readonly/>
+        </div>
+
+        <div class="form-group">
+            <label>وضعیت درخواست:</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="reqStatus" value="PENDING"/>در حال بررسی
+                </label>
+                <label>
+                    <input type="radio" name="reqStatus" value="DONE"/>انجام شد
+                </label>
+                <label>
+                    <input type="radio" name="reqStatus" value="RETURNED"/>برگشت شد
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reqReview">توضیحات انجام / علت برگشت:</label>
+            <textarea id="reqReview" rows="4" placeholder="توضیحات انجام درخواست یا علت برگشت را وارد کنید."></textarea>
+            <div id="errorMsg" class="error-msg" style="display:none;">لطفاً توضیحات را وارد کنید.</div>
+        </div>
+
+        <div class="modal-buttons">
+            <button id="btnSubmitRequest">تایید</button>
+            <button id="btnCancelRequest">انصراف</button>
+        </div>
+    </div>
+</div>
+
+<!-- Libraries -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="support_panel.js"></script>
+</body>
+</html>

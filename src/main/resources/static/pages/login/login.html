@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- WebSite Title -->
+    <title>ورود</title>
+
+    <!-- FavIcon Path -->
+    <link rel="icon" type="image/png" href="../../Logo/Icon-5.png">
+
+    <!-- Font (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS File Path -->
+    <link rel="stylesheet" href="login.css">
+
+    <!-- Phosphor Icons Path -->
+    <link rel="stylesheet" href="../../Icon/regular/style.css">
+</head>
+
+<body>
+<div class="login-container">
+    <!-- WebSite Icon -->
+    <div class="logo-box">
+        <img src="../../Logo/Icon-2.png" alt="لوگو سایت" class="site-logo">
+    </div>
+
+    <!-- Welcome Text -->
+    <h2>ورود به سامانه</h2>
+
+    <!-- Login Form -->
+    <form id="loginForm" novalidate>
+        <!-- Login Form Username Field -->
+        <div class="form-group">
+            <label for="username">نام کاربری (شماره تلفن):</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <!-- Login Form Password Field -->
+        <div class="form-group password-group">
+            <label for="password">رمز عبور:</label>
+            <div class="password-box">
+                <input type="password" id="password" name="password" required>
+                <button type="button" id="togglePassword" class="toggle-password">
+                    <i class="ph ph-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Login Form reCAPTCHA Field -->
+        <div class="form-group">
+            <label for="captchaInput">کپچا:</label>
+            <div class="captcha-box">
+                <img id="captchaImage" src="http://localhost:8080/Custra/captcha/image" alt="captcha">
+                <button type="button" id="refreshCaptcha" class="refresh-Captcha">
+                    <i class="ph ph-arrows-clockwise"></i>
+                </button>
+                <input type="text" id="captchaInput" placeholder="کد را وارد کنید" required>
+            </div>
+        </div>
+
+
+        <!-- Google reCAPTCHA -->
+<!--        <div class="g-recaptcha" data-sitekey=""></div>-->
+
+        <!-- Login Form Button -->
+        <button type="submit" class="btn-login">ورود</button>
+    </form>
+
+    <!-- Error Message Box -->
+    <div id="errorMsg" class="error"></div>
+
+    <!-- Register Link -->
+    <div class="register-link">
+        <p>حساب کاربری ندارید؟
+            <a href="../register/register.html" id="registerBtn">ثبت‌نام کنید</a>
+        </p>
+    </div>
+</div>
+
+<!-- Libraries -->
+<!--<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
+<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
+
+<!-- JavaScript File Path -->
+<script src="login.js"></script>
+</body>
+
+</html>

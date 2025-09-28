@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>داشبورد مشتری</title>
+
+  <link rel="icon" href="../../Logo/Icon-5.png" type="image/x-icon" />
+  <link rel="stylesheet" href="customer_dashboard.css" />
+</head>
+
+<body>
+<!-- WebSite Icon -->
+<div class="logo-box">
+  <img src="../../Logo/Icon-2.png" alt="لوگو سایت" class="site-logo">
+</div>
+
+<!-- Welcome Text -->
+<h2>کاربر عزیز خوش آمدید</h2>
+
+<!-- New Request Button -->
+<button id="btnNewRequest">ثبت درخواست جدید</button>
+
+<!-- Table -->
+<table>
+  <thead>
+  <!-- Table Title -->
+  <tr>
+    <th colspan="7" class="table-title">لیست درخواست‌های پشتیبانی</th>
+  </tr>
+
+  <!-- Table Header -->
+  <tr>
+    <th id="column1">شماره درخواست</th>
+    <th id="column2">زمان درخواست</th>
+    <th id="column3">وضعیت درخواست</th>
+    <th id="column4">موضوع درخواست</th>
+    <th id="column5">زمان انجام</th>
+    <th id="column6">توضیحات مدیر پشتیبانی</th>
+    <th id="column7">علت برگشت</th>
+  </tr>
+  </thead>
+
+  <!-- Table Body -->
+  <tbody id="requestTableBody">
+  <!-- داده‌ها توسط JS از سرور پر می‌شوند -->
+  <tr>
+    <td colspan="7" style="text-align:center;">در حال بارگذاری...</td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- New Request Modal -->
+<div id="newRequestModal" class="modal">
+  <div class="modal-content">
+    <h3>ثبت درخواست پشتیبانی</h3>
+
+    <div class="form-group">
+      <label for="reqTime">زمان درخواست:</label>
+      <input type="text" id="reqTime" readonly />
+    </div>
+
+    <div class="form-group">
+      <label for="reqSubject">موضوع درخواست:</label>
+      <textarea id="reqSubject" rows="4" placeholder="موضوع درخواست را وارد کنید"></textarea>
+      <div id="errorMsg" class="error-msg" style="display:none;">لطفاً موضوع درخواست را وارد کنید.</div>
+    </div>
+
+    <!-- Optional Description Field -->
+    <div class="form-group">
+      <label for="reqDescription">توضیحات:</label>
+      <textarea id="reqDescription" rows="3" placeholder="در صورت نیاز توضیح اضافه کنید"></textarea>
+    </div>
+
+    <!-- New Request Modal Button -->
+    <div class="modal-buttons">
+      <button id="btnSubmitRequest">ثبت و ارسال</button>
+      <button id="btnCancelRequest">انصراف</button>
+    </div>
+  </div>
+</div>
+
+<!-- Libraries -->
+<!--<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
+
+<!-- JavaScript File Path -->
+<script src="customer_dashboard.js"></script>
+</body>
+
+</html>

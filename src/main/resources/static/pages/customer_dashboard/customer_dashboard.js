@@ -1,0 +1,99 @@
+$(document).ready(function () {
+
+  const formatter = new Intl.DateTimeFormat('fa-IR', {
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit'
+  });
+
+  // --------- Load User Requests into Table ---------
+  function loadUserRequests() {
+    $.ajax({
+      url: '/api/custra/v1/requests',
+      method: 'GET',
+      dataType: 'json',
+      success: function (requests) {
+        const tbody = $('#requestTableBody');
+        tbody.empty(); // جدول را پاک می‌کند
+        if (requests.length === 0) {
+          tbody.append('<tr><td colspan="7" style="text-align:center;">درخواستی وجود ندارد</td></tr>');
+          return;
+        }
+        requests.forEach(req => {
+          const row = `
+                        <tr>
+                            <td>${req.id}</td>
+                            <td>${req.requestTime}</td>
+                            <td>${req.status}</td>
+                            <td>${req.subject}</td>
+                            <td>${req.completionTime}</td>
+                            <td>${req.supportNote}</td>
+                            <td>${req.returnReason}</td>
+                        </tr>
+                    `;
+          tbody.append(row);
+        });
+      },
+      error: function () {
+        alert('خطا در بارگذاری درخواست‌ها.');
+      }
+    });
+  }
+
+  // ابتدا جدول را بارگذاری کن
+  loadUserRequests();
+
+  // --------- New Request Modal Open ---------
+  $('#btnNewRequest').click(function () {
+    const now = new Date();
+    const faDate = now.toLocaleDateString('fa-IR') + ' ' +
+        now.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+
+    $('#reqTime').val(faDate);
+    $('#reqSubject').val('');
+    $('#errorMsg').hide();
+
+    $('#newRequestModal').css('display', 'flex');
+    setTimeout(() => $('#reqSubject').trigger('focus'), 0);
+  });
+
+  // --------- New Request Modal Close ---------
+  $('#btnCancelRequest').click(function () {
+    $('#newRequestModal').fadeOut();
+  });
+
+  $('#newRequestModal').click(function (e) {
+    if (e.target === this) $(this).fadeOut();
+  });
+
+  // --------- Hide Error on Input ---------
+  $('#reqSubject').on('input', function () {
+    if ($(this).val().trim() !== '') {
+      $('#errorMsg').hide();
+    }
+  });
+
+  // --------- Submit New Request ---------
+  $('#btnSubmitRequest').click(function () {
+    const subject = $('#reqSubject').val().trim();
+    const description = $('#reqDescription').val() || '';
+
+    if (subject === '') {
+      $('#errorMsg').fadeIn();
+      $('#reqSubject').trigger('focus');
+      return;
+    }
+
+    // ارسال درخواست به سرور
+    $.post('/api/custra/v1/requests/new-request', { subject: subject, description: description })
+        .done(function (data) {
+          $('#newRequestModal').fadeOut();
+          $('#reqSubject').val('');
+          $('#reqDescription').val('');
+          loadUserRequests(); // جدول آپدیت می‌شود
+        })
+        .fail(function () {
+          alert('خطا در ثبت درخواست.');
+        });
+  });
+
+});

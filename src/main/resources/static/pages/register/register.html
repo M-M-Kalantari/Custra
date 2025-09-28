@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- WebSite Title -->
+    <title>ثبت‌نام</title>
+
+    <!-- FavIcon Path -->
+    <link rel="icon" type="image/png" href="../../Logo/Icon-5.png">
+
+    <!-- Font (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS File Path -->
+    <link rel="stylesheet" href="register.css">
+
+    <!-- Phosphor Icons Path -->
+    <link rel="stylesheet" href="../../Icon/regular/style.css">
+
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- WebSite Icon -->
+        <div class="logo-box">
+            <img src="../../Logo/Icon-2.png" alt="لوگو سایت" class="site-logo">
+        </div>
+
+        <!-- Welcome Text -->
+        <h2>ثبت‌نام در سامانه</h2>
+
+        <!-- Register Form -->
+        <form id="registerForm" novalidate>
+            <!-- Register Form Name Field -->
+            <div class="form-group">
+                <label for="fullname">نام کامل:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+
+            <!-- Register Form Email Field -->
+            <div class="form-group">
+                <label for="email">ایمیل:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- Register Form PhoneNumber (Username) Field -->
+            <div class="form-group">
+                <label for="phone">شماره تلفن همراه:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <!-- Register Form Password Field -->
+            <div class="form-group password-group">
+                <label for="password">رمز عبور:</label>
+                <div class="password-box">
+                    <input type="password" id="password" name="password" required>
+                    <button type="button" id="togglePassword" class="toggle-password">
+                        <i class="ph ph-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Register Form Button -->
+            <button type="submit" class="btn-register">ثبت‌نام</button>
+        </form>
+
+        <!-- Error Message Box -->
+        <div id="errorMsg" class="error"></div>
+
+        <!-- Login Link -->
+        <div class="login-link">
+            <p>قبلاً حساب کاربری ساخته‌اید؟
+                <a href="../login/login.html" id="loginBtn">وارد شوید</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Libraries -->
+<!--    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
+
+    <!-- JavaScript File Path -->
+    <script src="register.js"></script>
+</body>
+
+</html>

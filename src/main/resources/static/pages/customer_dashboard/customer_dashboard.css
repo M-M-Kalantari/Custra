@@ -1,0 +1,258 @@
+/* Font (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
+
+/* WebSite Backgrand */
+body {
+  font-family: 'Vazirmatn', sans-serif;
+  background: linear-gradient(135deg, #0b8fa5, #1ec58c);
+  margin: 0;
+  padding: 20px;
+  color: #fff;
+  direction: rtl;
+}
+
+/* WebSite Icon */
+.logo-box {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  margin: auto;
+}
+
+.site-logo {
+  max-width: 150px;
+  max-height: 150px;
+  padding: 5px;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 8px;
+}
+
+/* Welcom Text */
+h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* New Request Button */
+#btnNewRequest {
+  display: inline-block;
+  background: linear-gradient(135deg, #055566, #0b8fa5);
+  border: none;
+  color: #fff;
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin: 20px;
+  direction: rtl;
+  text-align: center;
+}
+
+#btnNewRequest:hover {
+  background: linear-gradient(135deg, #097a8c, #18a774);
+  transform: translateY(-2px);
+}
+
+/* Table */
+table {
+  width: calc(100% - 40px);
+  margin: auto;
+  border-collapse: collapse;
+  font-family: 'Vazirmatn', sans-serif;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #333;
+  text-align: center;
+  font-variant-numeric: persian;
+}
+
+/* Table Title */
+.table-title {
+  background-color: #055566;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Table Header */
+thead tr:first-child {
+  background-color: #074f60;
+  color: #fff;
+  font-weight: 600;
+}
+
+thead tr:nth-child(2) {
+  background-color: #055566;
+  color: #fff;
+}
+
+/* Table Column Headers */
+thead th {
+  padding: 12px;
+  border-left: 1px solid #ddd;
+}
+
+th:nth-child(1) {
+  width: 5%;
+}
+
+th:nth-child(2) {
+  width: 15%;
+}
+
+th:nth-child(3) {
+  width: 10%;
+}
+
+th:nth-child(4) {
+  width: 20%;
+}
+
+th:nth-child(5) {
+  width: 15%;
+}
+
+th:nth-child(6) {
+  width: 20%;
+}
+
+th:nth-child(7) {
+  width: 15%;
+}
+
+/* Table Body */
+tbody td {
+  padding: 10px 12px;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table Even Rows  */
+tbody tr:nth-child(even) {
+  background-color: rgba(11, 143, 165, 0.08);
+}
+
+/* Table Hover */
+tbody tr:hover {
+  background-color: rgba(11, 143, 165, 0.3);
+}
+
+/* New Request Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px 35px 20px 50px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 650px;
+  font-family: 'Vazirmatn', sans-serif;
+  direction: rtl;
+  text-align: center;
+  align-items: center;
+  align-self: center;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #0b8fa5;
+  text-align: center;
+}
+
+.form-group {
+  color: #000;
+  direction: rtl;
+  text-align: right;
+}
+
+.modal-content label {
+  display: block;
+  margin: 8px 0 4px;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Vazirmatn', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+.modal-content input {
+  margin-bottom: 10px;
+}
+
+#reqTime {
+  text-align: center;
+}
+
+#reqSubject {
+  resize: none;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border: 2px solid transparent;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, #0b8fa5, #1ec58c);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  outline: none;
+}
+
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* New Request Modal Button */
+.modal-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Vazirmatn', sans-serif;
+  margin: 0 5px;
+}
+
+#btnSubmitRequest {
+  background: linear-gradient(135deg, #0b8fa5, #1ec58c);
+  color: #fff;
+}
+
+#btnSubmitRequest:hover {
+  background: linear-gradient(135deg, #097a8c, #18a774);
+}
+
+#btnCancelRequest {
+  background: #ccc;
+}
+
+#btnCancelRequest:hover {
+  background: #999;
+}

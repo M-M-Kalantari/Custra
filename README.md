@@ -1,7 +1,7 @@
 # Custra
 
 ## معرفی پروژه (فارسی)
-یک نمونه‌کار مدرن در حوزه‌ی **مدیریت ارتباط با مشتریان (CRM)** است.  
+**Custra** (مخفف Customer + Ultra) یک نمونه‌کار مدرن در حوزه‌ی **مدیریت ارتباط با مشتریان (CRM)** است.  
 این پروژه نسخه‌ی ساده‌شده یک سامانه CRM محسوب می‌شود که با تمرکز بر طراحی رابط کاربری زیبا و توسعه‌ی سمت سرور قدرتمند ساخته شده است.  
 
 ### ✨ ویژگی‌ها
@@ -36,7 +36,7 @@ While simplified, this project can serve as a **portfolio showcase** or a **foun
 ---
 
 ## 🛠️ Technologies | تکنولوژی‌ها
-- Java
+- Java 17+  
 - Spring Boot  
 - HTML, CSS, JavaScript  
 - Maven / Gradle  

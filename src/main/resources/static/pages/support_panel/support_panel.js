@@ -103,7 +103,7 @@ $(document).ready(function () {
         if(e.target === this) $(this).fadeOut();
     });
 
-    // Update Date from Server
+    // Send request to server
     $('#btnSubmitRequest').click(function () {
         const reqId = $('#reqNumber').val();
         const status = $('input[name="reqStatus"]:checked').val();

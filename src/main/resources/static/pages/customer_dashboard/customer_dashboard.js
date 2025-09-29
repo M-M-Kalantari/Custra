@@ -5,7 +5,7 @@ $(document).ready(function () {
     hour: '2-digit', minute: '2-digit'
   });
 
-  // --------- Load User Requests into Table ---------
+  // Get Data from Server
   function loadUserRequests() {
     $.ajax({
       url: '/api/custra/v1/requests',
@@ -13,17 +13,32 @@ $(document).ready(function () {
       dataType: 'json',
       success: function (requests) {
         const tbody = $('#requestTableBody');
-        tbody.empty(); // جدول را پاک می‌کند
+        tbody.empty();
         if (requests.length === 0) {
           tbody.append('<tr><td colspan="7" style="text-align:center;">درخواستی وجود ندارد</td></tr>');
           return;
         }
         requests.forEach(req => {
+          let req_status = "";
+          switch (req.status) {
+            case "SENT":
+              req_status = "ارسال شد";
+              break;
+            case "IN_REVIEW":
+              req_status = "در حال بررسی ⏳";
+              break;
+            case "DONE":
+              req_status = "انجام شد ✅";
+              break;
+            case "RETURNED":
+              req_status = "برگشت شد ⚠️";
+              break;
+          }
           const row = `
                         <tr>
                             <td>${req.id}</td>
                             <td>${req.requestTime}</td>
-                            <td>${req.status}</td>
+                            <td>${req_status}</td>
                             <td>${req.subject}</td>
                             <td>${req.completionTime}</td>
                             <td>${req.supportNote}</td>
@@ -39,10 +54,9 @@ $(document).ready(function () {
     });
   }
 
-  // ابتدا جدول را بارگذاری کن
   loadUserRequests();
 
-  // --------- New Request Modal Open ---------
+  // Modal Open
   $('#btnNewRequest').click(function () {
     const now = new Date();
     const faDate = now.toLocaleDateString('fa-IR') + ' ' +
@@ -56,7 +70,7 @@ $(document).ready(function () {
     setTimeout(() => $('#reqSubject').trigger('focus'), 0);
   });
 
-  // --------- New Request Modal Close ---------
+  // Modal Close
   $('#btnCancelRequest').click(function () {
     $('#newRequestModal').fadeOut();
   });
@@ -65,14 +79,14 @@ $(document).ready(function () {
     if (e.target === this) $(this).fadeOut();
   });
 
-  // --------- Hide Error on Input ---------
+  // Hide Error on Input
   $('#reqSubject').on('input', function () {
     if ($(this).val().trim() !== '') {
       $('#errorMsg').hide();
     }
   });
 
-  // --------- Submit New Request ---------
+  // Submit New Request
   $('#btnSubmitRequest').click(function () {
     const subject = $('#reqSubject').val().trim();
     const description = $('#reqDescription').val() || '';
@@ -83,7 +97,7 @@ $(document).ready(function () {
       return;
     }
 
-    // ارسال درخواست به سرور
+    // Send request to server
     $.post('/api/custra/v1/requests/new-request', { subject: subject, description: description })
         .done(function (data) {
           $('#newRequestModal').fadeOut();

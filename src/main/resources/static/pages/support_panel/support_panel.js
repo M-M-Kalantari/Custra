@@ -15,20 +15,23 @@ $(document).ready(function () {
             $('#submitted-requests').empty();
             $('#reviewing-requests').empty();
 
+            let req_status_en = "";
+            let req_status_fa = "";
+
             data.forEach(req => {
-                let req_status = "";
-                switch (req.status) {
+                req_status_en = req.status;
+                switch (req_status_en) {
                     case "SENT":
-                        req_status = "ارسال شد";
+                        req_status_fa = "ارسال شد";
                         break;
                     case "IN_REVIEW":
-                        req_status = "در حال بررسی ⏳";
+                        req_status_fa = "در حال بررسی ⏳";
                         break;
                     case "DONE":
-                        req_status = "انجام شد ✅";
+                        req_status_fa = "انجام شد ✅";
                         break;
                     case "RETURNED":
-                        req_status = "برگشت شد ⚠️";
+                        req_status_fa = "برگشت شد ⚠️";
                         break;
                 }
                 const row = `<tr>
@@ -37,14 +40,14 @@ $(document).ready(function () {
                     <td>${req.customerName || "-"}</td>
                     <td>${req.id}</td>
                     <td>${req.subject}</td>
-                    <td>${req_status}</td>
+                    <td>${req_status_fa}</td>
                     <td>${req.completionTime}</td>
                     <td>${req.returnReason}</td>
                     <td>${req.supportNote}</td>
                     <td><i class="ph ph-file-text review-icon"></i></td>
                 </tr>`;
 
-                if(req.status === "SENT" || req.status === "DONE") {
+                if(req_status_en === "SENT" || req_status_en === "DONE") {
                     $('#submitted-requests').append(row);
                 } else {
                     $('#reviewing-requests').append(row);
@@ -53,11 +56,37 @@ $(document).ready(function () {
 
             $('table tbody tr').each(function () {
                 const statusCell = $(this).find('td:nth-child(6)');
-                const status = statusCell.text().trim();
-                if (status === 'DONE') statusCell.html('<span class="status-text-done">انجام شد ✅</span>');
-                else if (status === 'RETURNED') statusCell.html('<span class="status-text-returned">برگشت شد ⚠️</span>');
-                else if (status === 'PENDING') statusCell.html('<span class="status-text-pending">در حال بررسی ⏳</span>');
+                const statusText = statusCell.text().trim();
+                let statusValue = "";
+                switch (statusText) {
+                    case "در حال بررسی":
+                    case "در حال بررسی ⏳":
+                        statusValue = "PENDING";
+                        break;
+                    case "انجام شد":
+                    case "انجام شد ✅":
+                        statusValue = "DONE";
+                        break;
+                    case "برگشت شد":
+                    case "برگشت شد ⚠️":
+                        statusValue = "RETURNED";
+                        break;
+                    // default:
+                    //     statusValue = "PENDING";
+                }
+
+                if (statusValue === 'DONE')
+                    statusCell.html('<span class="status-text-done">انجام شد ✅</span>');
+                else if (statusValue === 'RETURNED')
+                    statusCell.html('<span class="status-text-returned">برگشت شد ⚠️</span>');
+                else if (statusValue === 'PENDING')
+                    statusCell.html('<span class="status-text-pending">در حال بررسی ⏳</span>');
+                // else
+                //     statusCell.html('<span class="status-text-pending">در حال بررسی ⏳</span>');
+
+                refreshCSS();
             });
+
 
             // Modal Open
             $('.review-icon').click(function () {
@@ -135,5 +164,10 @@ $(document).ready(function () {
             }
         });
     });
-
 });
+
+function refreshCSS() {
+    const link = document.getElementById("theme-css");
+    const href = link.getAttribute("href").split("?")[0];
+    link.setAttribute("href", href + "?v=" + new Date().getTime());
+}

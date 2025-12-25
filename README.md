@@ -84,3 +84,14 @@ Dashboard | داشبورد
 بر اساس نقش کاربر: مشتری یا پشتیبان هدایت می‌شود. اگر کاربر لاگین نکرده باشد به صفحه ورود منتقل می‌شود.
 
 Automatically detects if the user is a customer or support agent. If not logged in, the user will be redirected to the login page.
+
+---
+
+## License
+
+This project is licensed under the MIT License.  
+© 2025 Mohammad Matin Kalantari
+
+## Contact
+
+Connect with me on LinkedIn: [M-M-Kalantari](https://www.linkedin.com/in/m-m-kalantari)
